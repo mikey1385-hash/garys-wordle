@@ -573,7 +573,7 @@ function getLocalDayIndex() {
   const now = new Date();
   const localMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   const epoch = new Date(2026, 2, 7); // March 7 2026 — Gary's 70th birthday
-  const raw = Math.floor((localMidnight - epoch) / (1000 * 60 * 60 * 24));
+  const raw = Math.round((localMidnight - epoch) / (1000 * 60 * 60 * 24));
 
   if (raw >= 0) {
     // Birthday and after: indices 0–69 (BIALY through PROUD), cycling
@@ -746,7 +746,7 @@ if (!hasSeenIntro) {
 const _now = new Date();
 const _midnight = new Date(_now.getFullYear(), _now.getMonth(), _now.getDate());
 const _epoch = new Date(2026, 2, 7);
-const rawOffset = Math.floor((_midnight - _epoch) / (1000 * 60 * 60 * 24));
+const rawOffset = Math.round((_midnight - _epoch) / (1000 * 60 * 60 * 24));
 const wordLabel = rawOffset < 0 ? `Word ${rawOffset} of 70` : `Word ${rawOffset + 1} of 70`;
 document.getElementById('day-counter').textContent =
   `${wordLabel} • ${new Date().toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric', year:'numeric'})}`;
