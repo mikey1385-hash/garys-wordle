@@ -484,7 +484,7 @@ header h1 {
 // ─────────────────────────────────────────────────────────────────────────────
 
 // WORD_LIST layout:
-//   Indices 0–69  → 70 main words (Word 1–70), shown starting March 7, 2026
+//   Indices 0–70  → 71 main words (Word 1–71), shown starting March 7, 2026
 //   Indices 70–72 → 3 pre-birthday countdown words (March 4, 5, 6 → Word -3, -2, -1)
 const WORD_LIST = [
   // ── MAIN WORDS (indices 0–69, Word 1–70, starting March 7 2026) ──────────
@@ -495,6 +495,7 @@ const WORD_LIST = [
   { word: "VISTA",  meaning: "🌅 Gary doesn't just visit places. He finds the view that takes your breath away." },
   { word: "LEASH",  meaning: "🐕 Technically Isa is on the leash. In practice, it's the other way around." },
   { word: "POISE",  meaning: "🧘 Calm under pressure, steady in a storm. Gary makes it look effortless." },
+  { word: "LEASH",  meaning: "🐕 Technically Isa is on the leash. In practice, it's the other way around." },
   { word: "MAVEN",  meaning: "🎓 The person everyone calls first. The one who always knows. That's Gary." },
   { word: "QUEEN",  meaning: "🐝 As in Queen Bee. Enough said." },
   { word: "SWEAT",  meaning: "💦 Earned on every run, every race, every finish line. Gary wears it well." },
@@ -577,12 +578,12 @@ function getLocalDayIndex() {
 
   if (raw >= 0) {
     // Birthday and after: indices 0–69 (BIALY through PROUD), cycling
-    return raw % 70;
+    return raw % 71;
   } else {
     // Pre-birthday countdown: raw=-3 → index 70 (SCOUT), raw=-2 → 71 (CANOE), raw=-1 → 72 (HAPPY)
     // Any earlier than -3 also gets SCOUT
-    const countdownIndex = 70 + Math.max(raw + 3, 0);
-    return Math.min(countdownIndex, 72);
+    const countdownIndex = 71 + Math.max(raw + 3, 0);
+    return Math.min(countdownIndex, 73);
   }
 }
 
@@ -747,7 +748,7 @@ const _now = new Date();
 const _midnight = new Date(_now.getFullYear(), _now.getMonth(), _now.getDate());
 const _epoch = new Date(2026, 2, 7);
 const rawOffset = Math.round((_midnight - _epoch) / (1000 * 60 * 60 * 24));
-const wordLabel = rawOffset < 0 ? `Word ${rawOffset} of 70` : `Word ${rawOffset + 1} of 70`;
+const wordLabel = rawOffset < 0 ? `Word ${rawOffset} of 71` : `Word ${rawOffset + 1} of 71`;
 document.getElementById('day-counter').textContent =
   `${wordLabel} • ${new Date().toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric', year:'numeric'})}`;
 
